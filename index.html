@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shuchi Patel | MCA Student & Aspiring Web Developer</title>
+<meta name="description" content="Portfolio of Shuchi Patel, MCA student at Uka Tarsadia University, learning HTML, CSS and JavaScript.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a1122; --surface:#12203d; --line:#26406e;
+  --text:#eceaf4; --muted:#a3a6bf;
+  --accent:#3ee0a0; --warm:#7db4ff;
+  --head:'Fraunces',Georgia,serif; --body:'Manrope',system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--bg);color:var(--text);font:400 1rem/1.7 var(--body)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--warm);outline-offset:3px}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+h1,h2,h3{font-family:var(--head);line-height:1.2}
+h2{font-size:clamp(1.6rem,4vw,2.1rem);margin-bottom:34px}
+h2::after{content:'';display:block;width:44px;height:4px;border-radius:4px;background:var(--warm);margin-top:10px}
+p{max-width:62ch}
+
+/* header */
+header{position:sticky;top:0;z-index:20;background:rgba(10,17,34,.92);backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:border-color .3s}
+header.scrolled{border-color:var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font:700 1.15rem var(--head);text-decoration:none}
+.mark{display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:var(--accent);color:#06231a;font:700 .85rem var(--body)}
+nav ul{display:flex;gap:26px;list-style:none}
+nav a{text-decoration:none;color:var(--muted);font-weight:500;transition:color .2s}
+nav a:hover{color:var(--text)}
+.menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--text);padding:8px 14px;border-radius:8px;font:500 .95rem var(--body);cursor:pointer}
+
+/* hero */
+.hero{padding:96px 0 72px}
+.hero h1{font-size:clamp(2.4rem,8vw,4.4rem);margin-bottom:14px}
+.role{color:var(--warm);font-weight:700;font-size:1.1rem;margin-bottom:18px}
+.hero p{color:var(--muted);margin-bottom:30px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:12px 24px;border-radius:999px;font-weight:700;text-decoration:none;border:1px solid var(--accent);transition:transform .2s,background .2s}
+.btn.primary{background:var(--accent);color:#06231a}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost:hover{background:rgba(62,224,160,.12)}
+
+/* counters */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+.stat{border-top:2px solid var(--accent);padding-top:12px}
+.stat b{display:block;font:700 2.6rem var(--head);color:var(--text)}
+.stat span{color:var(--muted);font-size:.95rem}
+
+/* about, skills */
+.edu{background:var(--surface);border-left:4px solid var(--warm);padding:20px 24px;border-radius:0 12px 12px 0;max-width:520px;margin-top:22px}
+.edu strong{display:block;font-size:1.05rem}
+.edu span{color:var(--muted)}
+.skills{display:flex;flex-wrap:wrap;gap:12px}
+.skill{background:var(--surface);border:1px solid var(--line);padding:12px 22px;border-radius:12px;font-weight:700}
+.skill small{display:block;color:var(--muted);font-weight:400}
+
+/* projects */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.card{background:var(--surface);border:1px dashed var(--line);border-radius:16px;padding:28px}
+.tag{display:inline-block;color:var(--warm);font-size:.85rem;font-weight:700;margin-bottom:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.edu-list{display:grid;gap:16px}
+.edu-row{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.edu-row h3{font-size:1.2rem;margin-bottom:4px}
+.edu-meta{display:grid;gap:6px;justify-items:end;color:var(--muted)}
+.badge.done{background:rgba(125,180,255,.16);color:var(--warm)}
+.badge{background:rgba(62,224,160,.16);color:var(--accent);padding:3px 14px;border-radius:999px;font-size:.85rem;font-weight:700}
+@media(max-width:720px){.edu-meta{justify-items:start}}
+.skill-grid .chips{margin-top:14px}
+.skill-grid .chips span{font-size:.95rem;padding:6px 16px}
+.chips span{background:rgba(62,224,160,.14);color:var(--accent);padding:4px 12px;border-radius:999px;font-size:.85rem;font-weight:500}
+.card.solid{background:linear-gradient(145deg,#173055,#0f1c38)}
+.card.solid{transition:transform .25s,border-color .25s}
+.card.solid:hover{transform:translateY(-4px);border-color:var(--accent)}
+.card h3{margin-bottom:8px}
+.card p{color:var(--muted)}
+.card.solid{border-style:solid;border-top:3px solid var(--warm)}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:40px}
+.links{list-style:none;display:grid;gap:12px;align-content:start}
+.links li{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;transition:border-color .2s}
+.links li:hover{border-color:var(--accent)}
+.ico{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:10px;background:rgba(62,224,160,.14);color:var(--accent);font:700 .85rem var(--body)}
+.links a{color:var(--text);word-break:break-all;text-decoration:none}
+.links small{display:block;color:var(--muted);font-size:.85rem}
+form{display:grid;gap:16px}
+label{font-weight:500;display:block;margin-bottom:6px}
+input,textarea{width:100%;background:var(--surface);border:1px solid var(--line);color:var(--text);padding:12px 14px;border-radius:10px;font:inherit}
+input:focus,textarea:focus{border-color:var(--accent);outline:none}
+.err{color:#ff9aa8;font-size:.9rem;min-height:1.2em}
+.ok{color:var(--warm);font-weight:500}
+form button{justify-self:start;cursor:pointer;font:700 1rem var(--body)}
+
+footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);text-align:center;font-size:.9rem}
+
+/* mobile */
+@media(max-width:720px){
+  .menu-btn{display:block}
+  nav{position:absolute;left:0;right:0;top:64px;background:var(--bg);border-bottom:1px solid var(--line);display:none}
+  nav.open{display:block}
+  nav ul{flex-direction:column;gap:0;padding:8px 20px 16px}
+  nav a{display:block;padding:12px 0}
+  .contact-grid{grid-template-columns:1fr}
+  .stats{gap:10px}
+  .stat b{font-size:2rem}
+  section{padding:56px 0}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap bar">
+    <a class="logo" href="#top"><span class="mark">SP</span>Shuchi Patel</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" aria-label="Main">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <h1>Hi, I’m Shuchi Patel.</h1>
+    <p class="role">MCA Student | Aspiring Web Developer</p>
+    <p>I’m learning to build websites and software with HTML, CSS, JavaScript, C++, Java, Python and PHP. This portfolio is my first step, and I’ll add every project I build here.</p>
+    <div class="btns">
+      <a class="btn primary" href="#contact">Get in touch</a>
+      <a class="btn ghost" href="https://github.com/suchipatel1002-coder" target="_blank" rel="noopener">View my GitHub</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b data-count="11">0</b><span>Technical skills</span></div>
+      <div class="stat"><b data-count="1">0</b><span>Year of MCA</span></div>
+      <div class="stat"><b data-count="2">0</b><span>Profiles linked</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <h2>About me</h2>
+    <p>I’m an MCA student from Valsad, Gujarat. I enjoy turning ideas into pages people can open and use, and I’m building my skills one project at a time. My goal is to become a full-stack web developer.</p>
+    <div class="edu">
+      <strong>Master of Computer Applications (MCA)</strong>
+      <span>Uka Tarsadia University, first year</span>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2>Skills</h2>
+    <div class="proj-grid skill-grid">
+      <article class="card solid">
+        <h3>Programming</h3>
+        <div class="chips"><span>C++</span><span>Java</span><span>Python</span><span>PHP</span></div>
+      </article>
+      <article class="card solid">
+        <h3>Frontend</h3>
+        <div class="chips"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+      </article>
+      <article class="card solid">
+        <h3>Backend and databases</h3>
+        <div class="chips"><span>Node.js</span><span>Express</span><span>MySQL</span><span>MongoDB</span></div>
+      </article>
+      <article class="card solid">
+        <h3>Core strengths</h3>
+        <div class="chips"><span>Communication</span><span>Time management</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2>Projects</h2>
+    <div class="proj-grid">
+      <article class="card solid">
+        <span class="tag">Website | Built during BCA</span>
+        <h3>Jewellery Shop Website</h3>
+        <p>A website for a jewellery shop. It shows the shop’s collection and helps customers see what is on offer.</p>
+        <div class="chips"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span></div>
+      </article>
+      <article class="card">
+        <span class="tag">Next up</span>
+        <h3>My next project</h3>
+        <p>I’m planning my next project as part of my MCA. It will appear here with a link to the code on GitHub.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <h2>Education</h2>
+    <div class="edu-list">
+      <article class="card solid edu-row">
+        <div>
+          <h3>Master of Computer Applications (MCA)</h3>
+          <p>Uka Tarsadia University</p>
+        </div>
+        <div class="edu-meta">
+          <span class="badge">Pursuing</span>
+          <span>First year</span>
+        </div>
+      </article>
+      <article class="card solid edu-row">
+        <div>
+          <h3>Bachelor of Computer Applications (BCA)</h3>
+          <p>Undergraduate degree in computer applications</p>
+        </div>
+        <div class="edu-meta">
+          <span class="badge done">Completed</span>
+        </div>
+      </article>
+      <article class="card solid edu-row">
+        <div>
+          <h3>Higher Secondary Certificate (12th Commerce)</h3>
+          <p>Higher secondary education, Commerce stream</p>
+        </div>
+        <div class="edu-meta">
+          <span class="badge done">Completed</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2>Get in touch</h2>
+    <p style="color:var(--muted);margin:-8px 0 28px">I’m open to learning opportunities and internships. Send a message and I’ll reply as soon as I can.</p>
+    <div class="contact-grid">
+      <ul class="links">
+        <li><span class="ico">@</span><div><small>Email</small><a href="mailto:shuchipatel1002@gmail.com">shuchipatel1002@gmail.com</a></div></li>
+        <li><span class="ico">Ph</span><div><small>Phone</small><a href="tel:+919736295805">+91 97362 95805</a></div></li>
+        <li><span class="ico">in</span><div><small>LinkedIn</small><a href="https://www.linkedin.com/in/shuchi-patel-8a371a447/" target="_blank" rel="noopener">Connect on LinkedIn</a></div></li>
+        <li><span class="ico">Git</span><div><small>GitHub</small><a href="https://github.com/suchipatel1002-coder" target="_blank" rel="noopener">View my code on GitHub</a></div></li>
+        <li><span class="ico">Loc</span><div><small>Location</small>Valsad, Gujarat, India</div></li>
+      </ul>
+
+      <form id="form" novalidate>
+        <div>
+          <label for="name">Your name</label>
+          <input id="name" name="name" autocomplete="name" placeholder="e.g. Riya Shah">
+          <div class="err" id="nameErr"></div>
+        </div>
+        <div>
+          <label for="email">Your email</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="example@gmail.com">
+          <div class="err" id="emailErr"></div>
+        </div>
+        <div>
+          <label for="msg">Message</label>
+          <textarea id="msg" name="msg" rows="5" placeholder="Hi Shuchi, I’d like to talk about…"></textarea>
+          <div class="err" id="msgErr"></div>
+        </div>
+        <button class="btn primary" type="submit">Send message</button>
+        <div class="ok" id="ok" role="status"></div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>© <span id="yr"></span> Shuchi Patel. Built with HTML, CSS and JavaScript.</footer>
+
+<script>
+// footer year
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// header border on scroll
+var header = document.querySelector('header');
+window.addEventListener('scroll', function(){
+  header.classList.toggle('scrolled', window.scrollY > 10);
+});
+
+// mobile menu
+var btn = document.getElementById('menuBtn'), nav = document.getElementById('nav');
+btn.addEventListener('click', function(){
+  var open = nav.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open);
+});
+nav.addEventListener('click', function(e){
+  if(e.target.tagName === 'A'){ nav.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+});
+
+// animated counters (run once when visible)
+var counters = document.querySelectorAll('[data-count]');
+function run(el){
+  var end = +el.dataset.count, n = 0;
+  var t = setInterval(function(){
+    n++; el.textContent = n;
+    if(n >= end) clearInterval(t);
+  }, end > 5 ? 160 : 350);
+}
+if('IntersectionObserver' in window){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ run(en.target); io.unobserve(en.target); }
+    });
+  }, {threshold:.6});
+  counters.forEach(function(c){ io.observe(c); });
+} else {
+  counters.forEach(function(c){ c.textContent = c.dataset.count; });
+}
+
+// contact form validation
+var form = document.getElementById('form');
+function setErr(id, text){ document.getElementById(id).textContent = text; return !text; }
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  var name = form.name.value.trim(), email = form.email.value.trim(), msg = form.msg.value.trim();
+  var a = setErr('nameErr', name.length < 2 ? 'Enter your name.' : '');
+  var b = setErr('emailErr', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? '' : 'Enter a valid email, like name@example.com.');
+  var c = setErr('msgErr', msg.length < 10 ? 'Write at least 10 characters.' : '');
+  if(a && b && c){
+    var body = 'From: ' + name + ' (' + email + ')\n\n' + msg;
+    window.location.href = 'mailto:shuchipatel1002@gmail.com?subject=' +
+      encodeURIComponent('Portfolio message from ' + name) + '&body=' + encodeURIComponent(body);
+    document.getElementById('ok').textContent = 'Opening your email app to send the message.';
+    form.reset();
+  }
+});
+</script>
+</body>
+</html>
